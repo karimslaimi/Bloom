@@ -1,9 +1,14 @@
-{% extends 'base.html.twig' %}
+{% extends 'UserBundle::Page_admin.html.twig' %}
 
 {% block body %}
     <h1>Staff</h1>
-
-    <table>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-lg-7">
+            <div class="card shadow-lg border-0 rounded-lg mt-5">
+                <div class="card-header"><h3 class="text-center font-weight-light my-4">Profile d'un staff</h3></div>
+                <div class="card-body">
+    <table class="justify-content-center">
         <tbody>
             <tr>
                 <th>Id</th>
@@ -25,20 +30,28 @@
                 <th>Statut</th>
                 <td>{{ staff.statut }}</td>
             </tr>
+            <tr>
+                <th>username</th>
+                <td>{{ staff.username }}</td>
+            </tr>
+            <tr>
+                <th>mail</th>
+                <td>{{ staff.email }}</td>
+            </tr>
         </tbody>
     </table>
 
-    <ul>
-        <li>
-            <a href="{{ path('staff_index') }}">Back to the list</a>
-        </li>
-        <li>
-            <a href="{{ path('staff_edit', { 'id': staff.id }) }}">Edit</a>
-        </li>
-        <li>
+    <div class="row">
+
+            <a class="btn btn-primary" href="{{ path('staff_edit', { 'id': staff.id }) }}">Modifier</a>
+
             {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
+        <button class="btn btn-danger"  type="submit" >Supprimer</button>
             {{ form_end(delete_form) }}
-        </li>
-    </ul>
+
+    </div>
+                </div></div></div></div>
+    <a class="btn btn-info" href="{{ path('staff_index') }}">Retour à la liste </a></div>
+
+    <br><br>
 {% endblock %}
