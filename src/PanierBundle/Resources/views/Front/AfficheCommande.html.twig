@@ -1,0 +1,88 @@
+{% extends "@User/Page_admin.html.twig" %}
+{% block body %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <script>
+        $(document).ready(function(){
+            $("#myInput").on("keyup", function() {
+                var value = $(this).val().toLowerCase();
+                $("#Wafa tr").filter(function() {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            });
+        });
+    </script>
+    <div class="col-lg-20 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h1 class="card-title">Liste Commande </h1>
+
+
+                <div class="table-responsive pt-3">
+                    <table class="table table-bordered">
+                        <thead>
+                        <tr>
+                            <th>
+                                Commande
+                            </th>
+                            <th>
+                                Date
+                            </th>
+                            <th>
+                                Total
+                            </th>
+                            <th>
+                                Action
+                            </th>
+                            <th>
+                                Delete
+                            </th>
+                            <th>
+                                Envoyer SMS
+                            </th>
+
+
+
+                        </tr>
+                        </thead>
+                        <tbody id="Wafa">
+                        {% for p in panier %}
+
+                            <tr>
+                                <td>
+                                    {{ p.id }}
+                                </td>
+                                <td>
+                                    {{ p.date|date('d/m/Y') }}
+                                </td>
+                                <td>
+                                    {{ p.total }}
+                                </td>
+
+                                <td><a href="{{ path('panier_details',{'id':p.id}) }}" >
+                                        <button  class="btn-xs btn-warning">Check</button>
+                                    </a></td>
+                                <td><a href="{{ path('delete_Commande',{'id':p.id}) }}" >
+                                        <button  class="btn-xs btn-danger">Delete</button>
+                                    </a></td>
+                                <td>
+                                <a href="{{ path('Sms')  }}" >
+                                    <button  class="btn-xs btn-primary">SMS</button>
+                                </a>
+                                </td>
+
+
+
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+{% endblock %}

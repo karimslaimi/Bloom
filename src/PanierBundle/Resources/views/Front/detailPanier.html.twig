@@ -1,0 +1,67 @@
+{% extends "@User/Page_admin.html.twig" %}
+{% block body %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <script>
+        $(document).ready(function(){
+            $("#myInput").on("keyup", function() {
+                var value = $(this).val().toLowerCase();
+                $("#Wafa tr").filter(function() {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            });
+        });
+    </script>
+    <div class="test">
+        <div class="col-lg-20 grid-margin stretch-card" xmlns="http://www.w3.org/1999/html">
+            <div class="card">
+                <div class="card-body">
+                    <h1 class="card-title">Liste des produits dans la commande</h1>
+                    <a href="{{ path('panier_Afficher') }}" >
+                        <button  class="btn-xs btn-dark     ">Back</button>
+                    </a>
+                    <div class="table-responsive pt-3">
+                        <table class="table table-bordered">
+                        <thead>
+                        <tr>
+                            <th>
+                                Id Client
+                            </th>
+                            <th>
+                                Produit
+                            </th>
+                            <th>
+                                Prix
+                            </th>
+
+
+
+                        </tr>
+                        </thead>
+                        <tbody id="Wafa">
+                        {% for p in elements %}
+
+                            <tr>
+                                <td>
+                                    {{ user }}
+                                </td>
+                                <td>
+                                    {{ p.nom }}
+                                </td>
+                                <td>
+                                    {{ p.prix }}
+                                </td>
+
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

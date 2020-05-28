@@ -1,0 +1,29 @@
+produit_homepage:
+    path:     /
+    defaults: { _controller: ProduitBundle:Default:index }
+produit_Ajout:
+    path:     /admin/AjouterProduit
+    defaults: { _controller: ProduitBundle:Produit:AjouterProduit }
+produit_Afficher:
+    path:     /admin/AfficherProduit
+    defaults: { _controller: ProduitBundle:Produit:AfficheProduit }
+
+produit_delete:
+    path:     /admin/deleteProduit/{id}
+    defaults: { _controller: ProduitBundle:Produit:deleteProduit }
+
+produit_modifier:
+    path:     /admin/dModifierProduit/{id}
+    defaults: { _controller: ProduitBundle:Produit:ModifierProduit }
+
+produit_Front:
+    path:     /Client/AfficherProduitFront/{id}
+    defaults: { _controller: ProduitBundle:Produit:AfficheCategorieProduit }
+
+produit_Afficher_Client:
+    path:     /Client/AfficherProduit
+    defaults: { _controller: UserBundle:Default:Client }
+
+Stat:
+    path: /admin/StatProduit
+    defaults: { _controller: ProduitBundle:Stat:Stat}

@@ -1,0 +1,404 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" href="{{ asset('Front/img/favicon.png') }}" type="image/png">
+    <title>Frogs</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{{ asset('Front/css/bootstrap.css') }}">
+    <link rel="stylesheet" href="{{ asset('Front/vendors/linericon/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('Front/css/font-awesome.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('Front/vendors/owl-carousel/owl.carousel.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('Front/vendors/lightbox/simpleLightbox.css') }}">
+    <link rel="stylesheet" href="{{ asset('Front/vendors/nice-select/css/nice-select.css') }}">
+    <link rel="stylesheet" href="{{ asset('Front/vendors/animate-css/animate.css') }}">
+    <link rel="stylesheet" href="{{ asset('Front/vendors/jquery-ui/jquery-ui.css') }}">
+    <!-- main css -->
+    <link rel="stylesheet" href="{{ asset('Front/css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('Front/css/responsive.css') }}">
+
+</head>
+
+
+
+
+<!--================Header Menu Area =================-->
+<body>
+<header class="header_area">
+    <div class="top_menu row m0">
+        <div class="container-fluid">
+            <div class="float-left">
+                <p>Call Us: +216 55 29 47 29</p>
+            </div>
+            <div class="float-right">
+                <ul class="right_side">
+                    <li>
+                        <a href="{{ path('fos_user_security_login') }}">
+                            Login/Register
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            My Account
+                        </a>
+                    </li>
+                    <li>
+                        <a href="contact.html">
+                            Contact Us
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="main_menu">
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <a class="navbar-brand logo_h" href="{{ path('produit_Afficher_Client') }}">
+                    <img src="{{ asset('Front/img/logo.pn') }}g" alt="">
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
+                    <div class="row w-100">
+                        <div class="col-lg-7 pr-0">
+                            <ul class="nav navbar-nav center_nav pull-right">
+                                <li class="nav-item active">
+                                    <a class="nav-link" href="{{ path('produit_Afficher_Client') }}">home</a>
+                                </li>
+                                <li class="nav-item submenu dropdown">
+                                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Catégorie</a>
+                                    <ul class="dropdown-menu">
+                                        {% for cat in cat %}
+
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="{{ path('produit_Front',{'id':cat.id}) }}">{{ cat.nom }}</a>
+                                            </li>
+                                        {% endfor %}
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="col-lg-5">
+                            <ul class="nav navbar-nav navbar-right right_nav pull-right">
+                                <hr>
+                                <li class="nav-item">
+                                    <a href="#" class="icons">
+                                        <i class="fa fa-search" aria-hidden="true"></i>
+                                    </a>
+                                </li>
+
+                                <hr>
+
+                                <li class="nav-item">
+                                    <a href="{{ path('fos_user_security_login') }}" class="icons">
+                                        <i class="fa fa-user" aria-hidden="true"></i>
+                                    </a>
+                                </li>
+
+                                <hr>
+
+                                <li class="nav-item">
+                                    <a data-toggle="modal" data-target="#cartModal" class="nav-link"><span class="icon-shopping_cart"></span><span id="notif">[0]</span></a>     <i class="lnr lnr lnr-cart"></i>
+                                </li>
+
+                                <hr>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </div>
+</header>
+
+<section class="clients_logo_area">
+    <div class="container-fluid">
+        <div class="clients_slider owl-carousel">
+            <div class="item">
+                <img src="{{ asset('Front/img/clients-logo/c-logo-1.png') }}" alt="">
+            </div>
+            <div class="item">
+                <img src="{{ asset('Front/img/clients-logo/c-logo-2.png') }}" alt="">
+            </div>
+            <div class="item">
+                <img src="{{ asset('Front/img/clients-logo/c-logo-3.png') }}" alt="">
+            </div>
+            <div class="item">
+                <img src="{{ asset('Front/img/clients-logo/c-logo-4.png') }}" alt="">
+            </div>
+            <div class="item">
+                <img src="{{ asset('Front/img/clients-logo/c-logo-5.png') }}" alt="">
+            </div>
+        </div>
+    </div>
+</section>
+<!--================End Clients Logo Area =================-->
+
+<!--================Feature Product Area =================-->
+<section class="feature_product_area section_gap">
+    <div class="main_box">
+        <div class="container-fluid">
+            <div class="row">
+
+            </div>            <center>    <h1>Frogs Products</h1></center>
+
+            <div class="row">
+
+                {% for p in prod %}
+
+
+                    <div class="col col">
+
+                        <div class="f_p_item">
+                            <div class="f_p_img">
+                                <img src="{{ asset('Upload/')}}{{ p.imgprod }}"  width="200" class="img-rectangle" class="col col "  /></a>
+                                <div class="p_icon">
+                                    <a onclick="addtoCart({{ p.id }},'{{ p.nomproduit }}',{{ p.prixprod }},'{{ p.imgprod }}')" >
+                                        <i class="lnr lnr-cart"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <h4>{{ p.nomproduit }}</h4>
+                            <h5>{{ p.prixprod }} TND</h5>
+                            <h6>{{ p.IdCategorie.getnom}}</h6>
+
+                        </div>
+
+                    </div>
+
+
+
+
+                {% endfor %}
+            </div>
+            <div class="navigation text-center " ><br>
+                <br>
+                <br>
+                {{ knp_pagination_render(prod) }}
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+
+<div class="modal fade" id="cartModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header border-bottom-0">
+                <h5 class="modal-title" id="exampleModalLabel">
+                    Your Shopping Cart
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <table class="table table-image">
+                    <thead>
+                    <tr>
+                        <th scope="col"></th>
+                        <th scope="col">Product</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody id="cart">
+
+                    </tbody>
+                </table>
+                <div class="d-flex justify-content-end">
+                    <h5>Total: <span class="price text-success" ><span id="total">0$</span></span></h5>
+                </div>
+            </div>
+            <div class="modal-footer border-top-0 d-flex justify-content-between">
+                <form action="{{ path('panier_Ajout') }}">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-success">Checkout</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!--================End Feature Product Area =================-->
+
+<!--================ Subscription Area ================-->
+
+
+<!--================ End Subscription Area ================-->
+
+<!--================ start footer Area  =================-->
+
+<footer class="footer-area section_gap">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3  col-md-6 col-sm-6">
+                <div class="single-footer-widget">
+                    <h6 class="footer_title">About Us</h6>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore dolore magna aliqua.</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-6">
+                <div class="single-footer-widget">
+                    <h6 class="footer_title">Newsletter</h6>
+                    <p>Stay updated with our latest trends</p>
+                    <div id="mc_embed_signup">
+                        <form target="_blank" action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&amp;id=92a4423d01"
+                              method="get" class="subscribe_form relative">
+                            <div class="input-group d-flex flex-row">
+                                <input name="EMAIL" placeholder="Email Address" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Email Address '"
+                                       required="" type="email">
+                                <button class="btn sub-btn">
+                                    <span class="lnr lnr-arrow-right"></span>
+                                </button>
+                            </div>
+                            <div class="mt-10 info"></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+
+<script src="{{ asset('Front/js/jquery-3.2.1.min.js') }}"></script>
+<script src=" {{ asset('jquery/jquery-min.js') }}"></script>
+<script src=" {{ asset('jquery/jquery.lightbox-0.5.css') }}"></script>
+<script src="{{ asset('Front/js/popper.js') }}"></script>
+<script src="{{ asset('Front/js/bootstrap.min.js') }}"></script>
+<script src="{{ asset('Front/js/stellar.js') }}"></script>
+<script src="{{ asset('Front/vendors/lightbox/simpleLightbox.min.js') }}"></script>
+<script src="{{ asset('Front/vendors/nice-select/js/jquery.nice-select.min.js') }}"></script>
+<script src="{{ asset('Front/vendors/isotope/imagesloaded.pkgd.min.js') }}"></script>
+<script src="{{ asset('Front/vendors/isotope/isotope-min.js') }}"></script>
+<script src="{{ asset('Front/vendors/owl-carousel/owl.carousel.min.js') }}"></script>
+<script src="{{ asset('Front/js/jquery.ajaxchimp.min.js') }}"></script>
+<script src="{{ asset('Front/vendors/counter-up/jquery.waypoints.min.js') }}"></script>
+<script src="{{ asset('Front/vendors/flipclock/timer.js') }}"></script>
+<script src="{{ asset('Front/vendors/counter-up/jquery.counterup.js') }}"></script>
+<script src="{{ asset('Front/js/mail-script.js') }}"></script>
+<script src="{{ asset('Front/js/theme.js') }}"></script>
+<script src ="{{ asset('Front/js/cookiesFunction.js') }}"></script>
+<script src="https://js.stripe.com/v3/"></script>
+<script>
+    function addtoCart(id, nomproduit, prixprod,file) {
+        console.log(id);
+        let jsoncart = {
+            id: id,
+            prix: prixprod,
+            nom: nomproduit,
+            image:file
+        };
+        let stingObject = JSON.stringify(jsoncart);
+        cookiemonster.append('card', stingObject, 1);
+        $('#cart').append('   <tr>\n'+
+            '              <td class="w-25">\n'+
+            '                <img src="{{ asset('Upload/') }}'+jsoncart.image+'" class="img-fluid img-thumbnail" alt="Sheep">\n'+
+            '              </td>\n'+
+            '              <td>'+jsoncart.nom+'</td>\n'+
+            '              <td>'+jsoncart.prix+'</td>\n'+
+            '              <td>\n'+
+            '                <a  onclick="deleteCookie(1)" class="btn btn-danger btn-sm">\n'+
+            '                  <i class="fa fa-times"></i>\n'+
+            '                </a>\n'+
+            '              </td>\n'+
+            '            </tr>')
+        let total = 0;
+        let cart = cookiemonster.get('card');
+
+        for (let i = 0; i < cart.length; i++) {
+            let jsoncart = JSON.parse(cart[i]);
+            total += parseFloat(jsoncart.prix);
+        }
+        $('#total').html(total + " TND");
+        $('#notif').html(cookiemonster.get('card').length);
+
+
+    }
+
+</script>
+<script>
+    $(document).ready(function () {
+        try {
+            cookiemonster.get("card")
+        } catch (e) {
+            cookiemonster.set("card", [], 1);
+
+        }
+        $('#cartModal').modal('show');
+        let cart = cookiemonster.get("card");
+        $('#cart').html("");
+        let total = 0;
+        for (let i = 0; i < cart.length; i++) {
+            var jsoncart = JSON.parse(cart[i]);
+            total += parseFloat(jsoncart.prix);
+            $('#cart').append('   <tr>\n'+
+                '              <td class="w-25">\n'+
+                '                <img src="{{ asset('') }}'+jsoncart.image+'" class="img-fluid img-thumbnail" alt="Sheep">\n'+
+                '              </td>\n'+
+                '              <td>'+jsoncart.nom+'</td>\n'+
+                '              <td>'+jsoncart.prix+'</td>\n'+
+                '              <td>\n'+
+                '                <a  onclick="deleteCookie(' + i + ')" class="btn btn-danger btn-sm">\n'+
+                '                  <i class="fa fa-times"></i>\n'+
+                '                </a>\n'+
+                '              </td>\n'+
+                '            </tr>')
+        }
+        $('#notif').html(cookiemonster.get('card').length);
+        $('#total').html(total + " TND");
+
+    })
+
+
+
+
+    function deleteCookie(i) {
+        cookiemonster.splice('card', i, 1, 1);
+        let cart = cookiemonster.get("card");
+        $('#cart').html("");
+        let total = 0;
+        for (let i = 0; i < cart.length; i++) {
+            var jsoncart = JSON.parse(cart[i]);
+            total += parseFloat(jsoncart.prix);
+            $('#cart').append('   <tr>\n'+
+                '              <td class="w-25">\n'+
+                '                <img src="{{ asset('') }}'+jsoncart.image+'" class="img-fluid img-thumbnail" alt="Sheep">\n'+
+                '              </td>\n'+
+                '              <td>'+jsoncart.nom+'</td>\n'+
+                '              <td>'+jsoncart.prix+'</td>\n'+
+                '              <td>\n'+
+                '                <a  onclick="deleteCookie(' + i + ')" class="btn btn-danger btn-sm">\n'+
+                '                  <i class="fa fa-times"></i>\n'+
+                '                </a>\n'+
+                '              </td>\n'+
+                '            </tr>')
+        }
+        $('#notif').html(cookiemonster.get('card').length);
+        $('#total').html(total + " TND");
+
+    }
+
+
+
+</script>
+
+
+
+</body>
+
+</html>

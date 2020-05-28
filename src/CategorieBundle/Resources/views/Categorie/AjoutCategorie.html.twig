@@ -1,0 +1,24 @@
+{% extends "@User/Page_admin.html.twig" %}
+
+{% block body %}
+
+    {{ form_start(form) }}
+    <div class="col-12 grid-margin stretch-card">
+    <div class="card">
+    <div class="card-body">
+    <h4 class="card-title">Ajouter catégorie</h4>
+    <p class="card-description">
+    </p>
+    <div class="form-group">
+        <label for="exampleInputName1">Nom</label>
+        {{ form_widget(form.nom, { 'attr': {'class': 'contact-fields-w3ls'} }) }}
+
+
+    <input type="submit" value="Envoyer" class=" btn btn-success"/> </div>
+    {{ form_end(form) }}
+
+    </div>
+    </div>
+    </div>
+
+{% endblock %}

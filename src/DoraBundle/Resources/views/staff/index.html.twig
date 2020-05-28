@@ -1,0 +1,64 @@
+{% extends "@User/Page_admin.html.twig" %}
+
+{% block body %}
+
+
+<br>
+
+
+    <ul>
+
+            <a class="btn btn-primary" href="{{ path('staff_new') }}">Ajouter un Staff</a>
+
+    </ul>
+
+    <div class="card mb-4">
+        <div class="card-header"><i class="fas fa-table mr-1"></i> Staff </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Nom</th>
+                        <th>Prenom</th>
+                        <th>Poste</th>
+                        <th>Statut</th>
+                        <th>Action</th>
+                    </tr>
+                    </thead>
+                    {% for staff in staff %}
+                        <tr>
+                            <td><a href="{{ path('staff_show', { 'id': staff.id }) }}">{{ staff.id }}</a></td>
+                            <td>{{ staff.nom }}</td>
+                            <td>{{ staff.prenom }}</td>
+                            <td>{{ staff.poste }}</td>
+                            <td>{{ staff.statut }}</td>
+                            <td>
+                                <ul>
+                                    <li>
+                                        <a href="{{ path('staff_show', { 'id': staff.id }) }}">Afficher</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ path('staff_edit', { 'id': staff.id }) }}">Modifier</a>
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    <tbody>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+{% endblock %}

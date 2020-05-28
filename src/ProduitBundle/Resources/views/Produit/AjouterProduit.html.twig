@@ -1,0 +1,47 @@
+{% extends "@User/Page_admin.html.twig" %}
+
+{% block body %}
+
+    {{ form_start(form) }}
+    <div class="col-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Ajouter produit</h4>
+                <p class="card-description">
+                </p>
+                <div class="form-group">
+                    <label for="exampleInputName1">Nom</label>
+                    {{ form_widget(form.nomproduit, { 'attr': {'class': 'form-control'} }) }}
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail3">Prix</label>
+                    {{ form_widget(form.prix_prod, { 'attr': {'class': 'form-control'} }) }}
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail3">Quantité</label>
+                    {{ form_widget(form.qte, { 'attr': {'class': 'form-control'} }) }}
+                </div>
+                <div class="form-group">
+
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputCity1">Categorie</label>
+                    {{ form_widget(form.id_Categorie, { 'attr': {'class': 'form-control'} }) }}
+                </div>
+
+                <div class="form-group">
+                    <label>File upload</label>
+                    {{ form_widget(form.file, { 'attr': {'class': 'form-control file-upload-info'} }) }}
+
+                    <div class="input-group col-xs-12">
+                    </div>
+                </div>
+                <input type="submit" value="Envoyer" class=" btn btn-success"/>
+                {{ form_end(form) }}
+
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}
