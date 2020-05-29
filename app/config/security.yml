@@ -5,7 +5,7 @@ security:
     role_hierarchy:
         ROLE_SUPER_ADMIN: ROLE_ADMIN
         ROLE_CLIENT:      ROLE_CLIENT
-        ROLE_CLIENT:      ROLE_STAFF
+        ROLE_STAFF:      ROLE_STAFF
 
     providers:
         fos_userbundle:
@@ -19,7 +19,9 @@ security:
                 csrf_token_generator: security.csrf.token_manager
                 success_handler: redirect.after.login
 
-            logout:       true
+            logout:
+                path:        /logout
+                target:      /
             anonymous:    true
 
     access_control:

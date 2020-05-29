@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Equipements list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Quantite</th>
+                <th>Date</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for equipement in equipements %}
+            <tr>
+                <td><a href="{{ path('equipement_show', { 'id': equipement.id }) }}">{{ equipement.id }}</a></td>
+                <td>{{ equipement.nom }}</td>
+                <td>{{ equipement.quantite }}</td>
+                <td>{% if equipement.date %}{{ equipement.date|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('equipement_show', { 'id': equipement.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('equipement_edit', { 'id': equipement.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('equipement_new') }}">Create a new equipement</a>
+        </li>
+    </ul>
+{% endblock %}

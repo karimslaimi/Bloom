@@ -133,6 +133,38 @@ class Jardin extends User
         $this->numtel = $numtel;
     }
 
+    /**
+     * @return float
+     */
+    public function getTarif()
+    {
+        return $this->tarif;
+    }
+
+    /**
+     * @param float $tarif
+     */
+    public function setTarif($tarif)
+    {
+        $this->tarif = $tarif;
+    }
+
+    /**
+     * @return string
+     */
+    public function getAdresse()
+    {
+        return $this->adresse;
+    }
+
+    /**
+     * @param string $adresse
+     */
+    public function setAdresse($adresse)
+    {
+        $this->adresse = $adresse;
+    }
+
 
 }
 

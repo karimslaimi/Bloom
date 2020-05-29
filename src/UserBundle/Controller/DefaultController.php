@@ -4,6 +4,7 @@ namespace UserBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Routing\Annotation\Route;
 
 class DefaultController extends Controller
 {
@@ -40,5 +41,9 @@ class DefaultController extends Controller
     {
         return $this->render('UserBundle::Page_admin.html.twig');
     }
+
+
+
+
 
 }

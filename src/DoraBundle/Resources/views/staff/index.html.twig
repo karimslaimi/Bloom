@@ -20,7 +20,8 @@
         <div class="card-header"><i class="fas fa-table mr-1"></i> Staff </div>
         <div class="card-body">
             <div class="table">
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <div id="dataTable_wrapper" class="dataTables_wrapper">
+                <table class="table table-bordered dataTable" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                     <tr>
                         <th>Id</th>
@@ -28,6 +29,7 @@
                         <th>Prenom</th>
                         <th>Poste</th>
                         <th>Statut</th>
+                        <th>Etat de compte</th>
                         <th>Action</th>
                     </tr>
                     </thead>
@@ -39,9 +41,18 @@
                             <td>{{ staff.poste }}</td>
                             <td>{{ staff.statut }}</td>
                             <td>
-                                <ul>
+                                {% if staff.enabled==1 %}Activé{% else %}Désactivé{% endif %}
+
+
+                            </td>
+                            <td>
+                                <ul style="list-style-type: none;list-style: none;">
                                     <li>
-                                        <a href="{{ path('staff_show', { 'id': staff.id }) }}">Afficher</a>
+                                        {% if staff.enabled==1 %}
+                                        <a href="{{ path('staff_disable', { 'id': staff.id }) }}">Désactiver</a>
+                                        {% else %}
+                                        <a href="{{ path('staff_enable', { 'id': staff.id }) }}">Activer</a>
+                                        {% endif %}
                                     </li>
                                     <li>
                                         <a href="{{ path('staff_edit', { 'id': staff.id }) }}">Modifier</a>
@@ -54,6 +65,7 @@
 
                     </tbody>
                 </table>
+                </div>
             </div>
         </div>
     </div>

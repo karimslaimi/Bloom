@@ -1,0 +1,68 @@
+{% extends 'UserBundle::Page_admin.html.twig' %}
+
+{% block body %}
+    <div id="layoutAuthentication">
+        <div id="layoutAuthentication_content">
+            <main>
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-7">
+                            <div class="card shadow-lg border-0 rounded-lg mt-5">
+                                <div class="card-header"><h3 class="text-center font-weight-light my-4">Modifier Votre Profile</h3>
+
+                                    {% if msg is defined  %}<span class="text-success">{{ msg }}</span>{% endif %}
+                                    {% if error is defined %}<span class="text-danger">{{ error }}</span>{% endif %}
+
+                                </div>
+                                <div class="card-body">
+                                    {{ form_start(edit_form) }}
+                                    <div class="form-row">
+                                        <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="small mb-1" for="inputEmailAddress">Nom</label>
+
+
+                                        {{ form_widget(edit_form.name,{ 'attr': {'placeholder': 'Entrer Nom','class': 'form-control py-4'} })}}
+                                    </div></div>
+
+                                        <div class="col-md-6">
+                                    <div class="form-group"><label class="small mb-1" for="inputEmailAddress">numtel</label>
+                                        {{ form_widget(edit_form.numtel,{ 'attr': {'placeholder': 'Entrer Num Tel','class': 'form-control py-4'} })}}
+                                    </div></div>
+                                    </div>
+
+                                    <div class="form-row">
+
+                                        <div class="col-md-6">
+                                            <div class="form-group"><label class="small mb-1" for="inputPassword">Adresse</label>
+                                                {{ form_widget(edit_form.adresse,{ 'attr': {'placeholder': 'Entrer Adresse','class': 'form-control py-4'} })}}
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <div class="form-group"><label class="small mb-1" for="inputConfirmPassword">Tarif</label>
+                                                {{ form_widget(edit_form.tarif,{ 'attr': {'placeholder': 'Entrer Tarif','class': 'form-control py-4'} })}}
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+
+                                        <div class="form-group"><label class="small mb-1" for="inputPassword">Description</label>
+                                            {{ form_widget(edit_form.description,{ 'attr': {'placeholder': 'Entrer description','class': 'form-control py-4'} })}}
+                                        </div>
+
+
+                                    <div class="form-group mt-4 mb-0">
+                                        <button class="btn btn-primary btn-block" type="submit" name="submit-form">Modifier</button>
+                                    </div>
+                                    {{ form_end(edit_form) }}
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </main></div></div>
+{% endblock %}

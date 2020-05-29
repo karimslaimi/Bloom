@@ -32,6 +32,39 @@ class StaffController extends Controller
     }
 
     /**
+     * Disable staff account.
+     *
+     * @Route("/disable/{id}", name="staff_disable")
+     * @Method("GET")
+     */
+    public function disableAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $staff = $em->getRepository('DoraBundle:Staff')->find($id);
+        $staff->setEnabled(false);
+        $em->flush();
+
+        return $this->redirectToRoute("staff_index");
+    }
+    /**
+     * enable staff account.
+     *
+     * @Route("/enable/{id}", name="staff_enable")
+     * @Method("GET")
+     */
+    public function enableAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $staff = $em->getRepository('DoraBundle:Staff')->find($id);
+        $staff->setEnabled(true);
+        $em->flush();
+        return $this->redirectToRoute("staff_index");
+    }
+
+
+    /**
      * Creates a new staff entity.
      *
      * @Route("/new", name="staff_new")

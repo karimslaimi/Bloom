@@ -1,0 +1,103 @@
+<?php
+
+namespace DoraBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Equipement
+ *
+ * @ORM\Table(name="equipement")
+ * @ORM\Entity(repositoryClass="DoraBundle\Repository\EquipementRepository")
+ */
+class Equipement
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+
+    /**
+     * @ORM\Column(name="nom",type="string")
+     */
+    private $nom;
+
+    /**
+     * @ORM\Column(name="quantite",type="integer")
+     */
+    private $quantite;
+
+    /**
+     * @ORM\Column(name="date",type="datetime")
+     */
+    private $date;
+
+
+
+    /**
+     * Get id
+     *
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getNom()
+    {
+        return $this->nom;
+    }
+
+    /**
+     * @param mixed $nom
+     */
+    public function setNom($nom)
+    {
+        $this->nom = $nom;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getQuantite()
+    {
+        return $this->quantite;
+    }
+
+    /**
+     * @param mixed $quantite
+     */
+    public function setQuantite($quantite)
+    {
+        $this->quantite = $quantite;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDate()
+    {
+        return $this->date;
+    }
+
+    /**
+     * @param mixed $date
+     */
+    public function setDate($date)
+    {
+        $this->date = $date;
+    }
+
+
+
+}
+
