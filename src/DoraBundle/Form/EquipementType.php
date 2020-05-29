@@ -13,7 +13,7 @@ class EquipementType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('nom')->add('quantite')->add('date');
+        $builder->add('nom')->add('quantite')->add('prix');
     }/**
      * {@inheritdoc}
      */

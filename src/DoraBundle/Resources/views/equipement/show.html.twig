@@ -1,40 +1,55 @@
-{% extends 'base.html.twig' %}
+
+
+{% extends 'UserBundle::Page_admin.html.twig' %}
 
 {% block body %}
+<div id="layoutAuthentication">
+    <div id="layoutAuthentication_content">
+        <main>
     <h1>Equipement</h1>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-7">
+                <div class="card shadow-lg border-0 rounded-lg mt-5">
+                    <div class="card-header"><h3 class="text-center font-weight-light my-4">Profile d'un staff</h3></div>
+                    <div class="card-body">
+                        <table>
+                            <tbody>
+                            <tr>
+                                <th>Id</th>
+                                <td>{{ equipement.id }}</td>
+                            </tr>
+                            <tr>
+                                <th>Nom</th>
+                                <td>{{ equipement.nom }}</td>
+                            </tr>
+                            <tr>
+                                <th>Quantite</th>
+                                <td>{{ equipement.quantite }}</td>
+                            </tr>
+                            <tr>
+                                <th>Prix</th>
+                                <td>{{ equipement.prix }}</td>
+                            </tr>
+                            <tr>
+                                <th>Date</th>
+                                <td>{% if equipement.date %}{{ equipement.date|date('Y-m-d H:i:s') }}{% endif %}</td>
+                            </tr>
+                            </tbody>
+                        </table>
 
-    <table>
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ equipement.id }}</td>
-            </tr>
-            <tr>
-                <th>Nom</th>
-                <td>{{ equipement.nom }}</td>
-            </tr>
-            <tr>
-                <th>Quantite</th>
-                <td>{{ equipement.quantite }}</td>
-            </tr>
-            <tr>
-                <th>Date</th>
-                <td>{% if equipement.date %}{{ equipement.date|date('Y-m-d H:i:s') }}{% endif %}</td>
-            </tr>
-        </tbody>
-    </table>
+                        <div class="row">
 
-    <ul>
-        <li>
-            <a href="{{ path('equipement_index') }}">Back to the list</a>
-        </li>
-        <li>
-            <a href="{{ path('equipement_edit', { 'id': equipement.id }) }}">Edit</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+                            <a class="btn btn-primary" href="{{ path('equipement_edit', { 'id': equipement.id }) }}">Modifier</a>
+
+
+                            <a class="btn btn-danger" href="{{ path('equipement_delete', {'id': equipement.id}) }}"  type="submit" >Supprimer</a>
+
+
+                        </div>
+                    </div></div></div></div>
+       <div class="justify-content-center"> <a class="btn btn-info justify-content-center " href="{{ path('equipement_index') }}">Retour à la liste </a></div></div>
+        </main></div></div>
+    <br><br>
 {% endblock %}
+

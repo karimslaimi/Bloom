@@ -2,6 +2,7 @@
 
 namespace DoraBundle\Controller;
 
+use DateTime;
 use DoraBundle\Entity\Equipement;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
@@ -26,7 +27,7 @@ class EquipementController extends Controller
 
         $equipements = $em->getRepository('DoraBundle:Equipement')->findAll();
 
-        return $this->render('equipement/index.html.twig', array(
+        return $this->render('@Dora/equipement/index.html.twig', array(
             'equipements' => $equipements,
         ));
     }
@@ -44,6 +45,8 @@ class EquipementController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $date = new DateTime("now");
+            $equipement->setDate($date);
             $em = $this->getDoctrine()->getManager();
             $em->persist($equipement);
             $em->flush();
@@ -51,7 +54,7 @@ class EquipementController extends Controller
             return $this->redirectToRoute('equipement_show', array('id' => $equipement->getId()));
         }
 
-        return $this->render('equipement/new.html.twig', array(
+        return $this->render('@Dora/equipement/new.html.twig', array(
             'equipement' => $equipement,
             'form' => $form->createView(),
         ));
@@ -67,7 +70,7 @@ class EquipementController extends Controller
     {
         $deleteForm = $this->createDeleteForm($equipement);
 
-        return $this->render('equipement/show.html.twig', array(
+        return $this->render('@Dora/equipement/show.html.twig', array(
             'equipement' => $equipement,
             'delete_form' => $deleteForm->createView(),
         ));
@@ -88,10 +91,12 @@ class EquipementController extends Controller
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('equipement_edit', array('id' => $equipement->getId()));
+            return $this->render('@Dora/equipement/edit.html.twig', array("msg"=>"Modfié avec succés",'equipement' => $equipement,'edit_form' => $editForm->createView()));
+        }else if($editForm->isSubmitted() &&!$editForm->isValid()){
+            return $this->render('@Dora/equipement/edit.html.twig', array("error"=>"Les champs sont invalides",'equipement' => $equipement,'edit_form' => $editForm->createView()));
         }
 
-        return $this->render('equipement/edit.html.twig', array(
+        return $this->render('@Dora/equipement/edit.html.twig', array(
             'equipement' => $equipement,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
@@ -101,19 +106,19 @@ class EquipementController extends Controller
     /**
      * Deletes a equipement entity.
      *
-     * @Route("/{id}", name="equipement_delete")
+     * @Route("/delete/{id}", name="equipement_delete")
      * @Method("DELETE")
      */
     public function deleteAction(Request $request, Equipement $equipement)
     {
         $form = $this->createDeleteForm($equipement);
-        $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
+
+
             $em = $this->getDoctrine()->getManager();
             $em->remove($equipement);
             $em->flush();
-        }
+
 
         return $this->redirectToRoute('equipement_index');
     }

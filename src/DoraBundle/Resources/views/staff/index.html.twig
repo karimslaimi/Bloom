@@ -49,13 +49,12 @@
                                 <ul style="list-style-type: none;list-style: none;">
                                     <li>
                                         {% if staff.enabled==1 %}
-                                        <a href="{{ path('staff_disable', { 'id': staff.id }) }}">Désactiver</a>
+                                        <a class="btn btn-danger" href="{{ path('staff_disable', { 'id': staff.id }) }}">Désactiver</a>
                                         {% else %}
-                                        <a href="{{ path('staff_enable', { 'id': staff.id }) }}">Activer</a>
+                                        <a class="btn btn-info" href="{{ path('staff_enable', { 'id': staff.id }) }}">Activer</a>
                                         {% endif %}
-                                    </li>
-                                    <li>
-                                        <a href="{{ path('staff_edit', { 'id': staff.id }) }}">Modifier</a>
+
+                                        <a class="btn btn-primary" href="{{ path('staff_edit', { 'id': staff.id }) }}">Modifier</a>
                                     </li>
                                 </ul>
                             </td>

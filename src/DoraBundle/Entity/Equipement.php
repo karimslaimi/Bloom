@@ -37,6 +37,10 @@ class Equipement
      */
     private $date;
 
+    /**
+     * @ORM\Column(name="prix",type="float")
+     */
+    private $prix;
 
 
     /**
@@ -96,6 +100,24 @@ class Equipement
     {
         $this->date = $date;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getPrix()
+    {
+        return $this->prix;
+    }
+
+    /**
+     * @param mixed $prix
+     */
+    public function setPrix($prix)
+    {
+        $this->prix = $prix;
+    }
+
+
 
 
 

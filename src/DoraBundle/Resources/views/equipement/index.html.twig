@@ -1,43 +1,74 @@
-{% extends 'base.html.twig' %}
+
+
+{% extends "@User/Page_admin.html.twig" %}
 
 {% block body %}
-    <h1>Equipements list</h1>
 
-    <table>
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Nom</th>
-                <th>Quantite</th>
-                <th>Date</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for equipement in equipements %}
-            <tr>
-                <td><a href="{{ path('equipement_show', { 'id': equipement.id }) }}">{{ equipement.id }}</a></td>
-                <td>{{ equipement.nom }}</td>
-                <td>{{ equipement.quantite }}</td>
-                <td>{% if equipement.date %}{{ equipement.date|date('Y-m-d H:i:s') }}{% endif %}</td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('equipement_show', { 'id': equipement.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('equipement_edit', { 'id': equipement.id }) }}">edit</a>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+    <script>
+        $(document).ready( function () {
+            $('#dataTable').DataTable();
+        } );
+    </script>
+    <br>
 
+<div id="layoutAuthentication">
+    <div id="layoutAuthentication_content">
+        <main>
     <ul>
-        <li>
-            <a href="{{ path('equipement_new') }}">Create a new equipement</a>
-        </li>
+
+        <a class="btn btn-primary" href="{{ path('equipement_new') }}">Ajouter un equipement</a>
+
     </ul>
+
+    <div class="card mb-4">
+        <div class="card-header"><i class="fas fa-table mr-1"></i> Staff </div>
+        <div class="card-body">
+            <div class="table">
+                <div id="dataTable_wrapper" class="dataTables_wrapper">
+                    <table class="table table-bordered dataTable" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Nom</th>
+                            <th>Quantite</th>
+                            <th>Prix</th>
+                            <th>Date</th>
+                            <th>Actions</th>
+                        </tr>
+                        </thead>
+                        {% for equipement in equipements %}
+                            <tr>
+                                <td><a href="{{ path('equipement_show', { 'id': equipement.id }) }}">{{ equipement.id }}</a></td>
+                                <td>{{ equipement.nom }}</td>
+                                <td>{{ equipement.quantite }}</td>
+                                <td>{{ equipement.prix }}</td>
+                                <td>{% if equipement.date %}{{ equipement.date|date('Y-m-d ') }}{% endif %}</td>
+                                <td>
+                                    <ul style="list-style-type: none;list-style: none;">
+                                        <li>
+                                            <a class="btn btn-danger" href="{{ path('equipement_delete', { 'id': equipement.id }) }}">Supprimer</a>
+
+
+                                            <a class="btn btn-primary" href="{{ path('equipement_edit', { 'id': equipement.id }) }}">Modifier</a>
+                                        </li>
+                                    </ul>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        <tbody>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</main></div></div>
+
+
+
+
 {% endblock %}
+
