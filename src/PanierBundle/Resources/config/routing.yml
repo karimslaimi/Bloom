@@ -1,6 +1,4 @@
-panier_homepage:
-    path:     /
-    defaults: { _controller: PanierBundle:Default:index }
+
 
 panier_Ajout:
     path:     /AjoutPanier

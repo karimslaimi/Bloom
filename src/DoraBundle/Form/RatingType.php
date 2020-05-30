@@ -3,6 +3,7 @@
 namespace DoraBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -14,7 +15,7 @@ class RatingType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         try{
-            $builder  ->add('comment')
+            $builder  ->add('comment',TextareaType::class)
 
                 ->add('client');
         }catch (\Exception $ex){

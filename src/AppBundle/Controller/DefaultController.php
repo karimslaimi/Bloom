@@ -4,6 +4,7 @@ namespace AppBundle\Controller;
 
 use DoraBundle\Entity\Jardin;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
@@ -20,9 +21,7 @@ class DefaultController extends Controller
 
 
         // replace this example code with whatever you need
-        return $this->render('default/index.html.twig', [
-            'base_dir' => realpath($this->getParameter('kernel.project_dir')).DIRECTORY_SEPARATOR,
-        ]);
+        return $this->render('default/index.html.twig');
     }
     /**
      * @Route("/pers", name="pers")
@@ -119,6 +118,8 @@ class DefaultController extends Controller
 
         }
     }
+
+
 
 
 

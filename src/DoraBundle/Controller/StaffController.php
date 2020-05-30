@@ -123,9 +123,9 @@ class StaffController extends Controller
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->render('staff_edit', array("msg"=>"Modfié avec succés",'id' => $staff->getId()));
+            return $this->render('@Dora/staff/edit.html.twig', array( 'edit_form' => $editForm->createView(),"msg"=>"Modfié avec succés",'id' => $staff->getId()));
         }else if($editForm->isSubmitted() &&!$editForm->isValid()){
-            return $this->render('staff_edit', array("error"=>"Les champs sont invalides",'id' => $staff->getId()));
+            return $this->render('@Dora/staff/edit.html.twig', array('edit_form' => $editForm->createView(),"error"=>"Les champs sont invalides",'id' => $staff->getId()));
         }
 
         return $this->render('@Dora/staff/edit.html.twig', array(

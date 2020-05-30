@@ -1,6 +1,4 @@
-produit_homepage:
-    path:     /
-    defaults: { _controller: ProduitBundle:Default:index }
+
 produit_Ajout:
     path:     /admin/AjouterProduit
     defaults: { _controller: ProduitBundle:Produit:AjouterProduit }

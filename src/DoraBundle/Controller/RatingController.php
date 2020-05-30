@@ -27,6 +27,10 @@ class RatingController extends Controller
 
         $ratings = $em->getRepository('DoraBundle:Rating')->findAll();
         $average=$em->getRepository(Rating::class)->getratings();
+
+
+
+
         $rating = new Rating();
         $form = $this->createForm('DoraBundle\Form\RatingType', $rating)->add('rating',\blackknight467\StarRatingBundle\Form\RatingType::class, [
             //...
@@ -37,11 +41,15 @@ class RatingController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $date=new \DateTime();
+            $rating->setDate($date);
+
+
             $em = $this->getDoctrine()->getManager();
             $em->persist($rating);
             $em->flush();
 
-            return $this->redirectToRoute('rating_show', array('id' => $rating->getId()));
+            return $this->redirectToRoute('rating_index', array('id' => $rating->getId()));
         }
 
 

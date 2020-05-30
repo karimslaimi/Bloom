@@ -1,6 +1,4 @@
-categorie_homepage:
-    path:     /
-    defaults: { _controller: CategorieBundle:Default:index }
+
 categorie_Ajout:
     path:     /admin/ajoutCategorie
     defaults: { _controller: CategorieBundle:Categorie:AjoutCategorie }
