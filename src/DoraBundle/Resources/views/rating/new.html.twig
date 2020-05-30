@@ -1,0 +1,24 @@
+{% extends '@Dora/Layoutclient.html.twig' %}
+
+{% block body %}
+
+    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" type="text/css" href="{{ asset('public/css/rating.css') }}" />
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script src="{{ asset('public/js/rating.js') }}"></script>
+
+    <h1>Rating creation</h1>
+
+    {{ form_start(form) }}
+        {{ form_widget(form) }}
+        <input type="submit" value="Create" />
+    {{ form_end(form) }}
+
+
+    <ul>
+        <li>
+            <a href="{{ path('rating_index') }}">Back to the list</a>
+        </li>
+    </ul>
+{% endblock %}

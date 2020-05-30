@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+{% stylesheets
+    'public/css/rating.css'
+    filter="cssrewrite" %}
+    <link href="{{ asset_url }}" rel="stylesheet" type="text/css" />
+{% endstylesheets %}
+{% block body %}
+    <h1>Rating creation</h1>
+
+    {{ form_start(form) }}
+        {{ form_widget(form) }}
+        <input type="submit" value="Create" />
+    {{ form_end(form) }}
+
+    <ul>
+        <li>
+            <a href="{{ path('rating_index') }}">Back to the list</a>
+        </li>
+    </ul>
+{% endblock %}
