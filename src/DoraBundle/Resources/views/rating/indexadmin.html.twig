@@ -1,4 +1,4 @@
-{% extends 'LayoutFront.html.twig' %}
+{% extends '@User/Page_admin.html.twig' %}
 
 {% block body %}
     <style>
@@ -118,6 +118,14 @@
             height: 150px;
         }
 
+        .topright{
+          position: relative;
+            float: right;
+        }
+        .topright:hover{
+            color:red;
+        }
+
 
 
     </style>
@@ -129,30 +137,11 @@
     <script src="{{ asset('public/js/rating.js') }}"></script>
 
 
-    <!-- ================ start banner Area ================= -->
-    <section class="banner-area">
-        <div class="container">
-            <div class="row justify-content-center align-items-center">
-                <div class="col-lg-12 banner-right">
-                    <h1 class="text-white">
-                       AVIS
-                    </h1>
-                    <p class="mx-auto text-white  mt-20 mb-40">
-                     Les avis de notre clientèle , vous pouvez nous dire qu'est ce que vous pensez
-                    </p>
-                    <div class="link-nav">
-
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- ================ End banner Area ================= -->
-
-    <div class="container" style="padding-top: 20px">
+    <h1>Ratings list</h1>
+    <div class="container">
         <div class="be-comment-block">
             <h1 class="comments-title">Commentaires ({{ count }})
-            <span class=" pull-right">Note de notre jardin({{ average|number_format(2) }})</span></h1>
+                <span class=" pull-right">Note de notre jardin({{ average|number_format(2) }})</span></h1>
 
             {% for rating in ratings %}
                 <div class="be-comment">
@@ -170,41 +159,17 @@
 				  {{ rating.date|date("F d, Y  H:i:s")}}
 			</span>
                         <p class="be-comment-text">
+                            <a href="{{ path('rating_delete', {'id': rating.id}) }}"><i class="topright far fa-trash-alt"></i></a>
                             {{ rating.comment}}
                         </p>
                     </div>
                 </div>
             {% endfor %}
 
-            <br>
-
-            <h4 class="align-content-lg-center">Ajouter votre avis</h4>
-
-            <br>
 
 
-            {{form_start(form, { 'attr': {'class': 'form-block'} })}}
-                <div class="row">
-                    <div class="col-xs-12 col-sm-6">
-                        <div class="form-group fl_icon">
-                            <div class="icon"><i class="fa fa-user"></i></div>
-                           {{form_widget(form.client,{ 'attr': {'placeholder': 'Votre nom','class': 'form-input '} })}}
-                        </div>
-                    </div>
-                    <div class="col-xs-12 col-sm-6 fl_icon">
-                        <div class="form-group fl_icon">
 
-                            {{form_widget(form.rating)}}
-                        </div>
-                    </div>
-                    <div class="col-xs-12 col-sm-12 ">
-                        <div class="form-group">
-                            {{form_widget(form.comment,{ 'attr': {'placeholder': 'Votre avis','class': 'form-input '} })}}
-                        </div>
-                    </div>
 
-                </div> <button type="submit" class="btn btn-primary pull-right">submit</button>
-            {{form_end(form)}}
         </div>
     </div>
 {% endblock %}

@@ -61,6 +61,39 @@ class RatingController extends Controller
         ));
     }
 
+
+
+    /**
+     * Lists all rating entities for the admin.
+     *
+     * @Route("/list", name="rating_admin")
+     * @Method("GET")
+     */
+    public function ratinglistAction(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $ratings = $em->getRepository('DoraBundle:Rating')->findAll();
+        $average=$em->getRepository(Rating::class)->getratings();
+
+
+
+
+
+
+
+        return $this->render('@Dora/rating/indexadmin.html.twig', array(
+            'ratings' => $ratings,
+            "count"=>count($ratings),
+            "average"=>$average,
+        ));
+    }
+
+
+
+
+
+
     /**
      * Creates a new rating entity.
      *
@@ -136,21 +169,19 @@ class RatingController extends Controller
     /**
      * Deletes a rating entity.
      *
-     * @Route("/{id}", name="rating_delete")
+     * @Route("/delete/{id}", name="rating_delete")
      * @Method("DELETE")
      */
     public function deleteAction(Request $request, Rating $rating)
     {
         $form = $this->createDeleteForm($rating);
-        $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->remove($rating);
             $em->flush();
-        }
 
-        return $this->redirectToRoute('rating_index');
+
+        return $this->redirectToRoute('rating_admin');
     }
 
     /**
