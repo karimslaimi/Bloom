@@ -33,9 +33,14 @@
                 <td>
                     <ul>
                         <li>
-                            <button type="button" id="dialog" class=" btn btn-primary" data-id="{{ contact.id }}"  >
+                            <button type="button" id="dialog"   class=" btn btn-primary" data-id="{{ contact.id }}" >
                                 Afficher
                             </button>
+                            <div hidden="hidden" id="modaldata{{ contact.id }}">
+                                {{  render(controller('DoraBundle:Contact:show',{'id':contact.id})) }}
+                            </div>
+                                
+
                         </li>
                         <li>
                             <a href="{{ path('contact_edit', { 'id': contact.id }) }}">edit</a>
@@ -54,12 +59,14 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Information sur Contact</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
+
+
 
                 </div>
                 <div class="modal-footer">
@@ -77,22 +84,38 @@
     <script>
         $(document).ready(function() {
             $(document).on("click", "#dialog", function () {
-                var contactid = $(this).data('id');
-                console.log(contactid);
-                console.log("idprob");
-               $.ajax({
+
+                console.log("here");
+                var id = $(this).data('id');
+                console.log(id);
+                element = document.getElementById('modaldata'+id);
+
+                var html = element.innerHTML;
+
+                $('#exampleModal .modal-body').html(html);
+                $('#exampleModal').modal('show');
+
+               /* load(url, function () {
+                    $('.closeDialog, #person_education_form_cancel').click(function () {
+                        $('#addSchool').trigger('click');
+                    });
+                });*/
+
+            /*   $.ajax({
                     type: 'GET',
                     url: "/contact/"+contactid,
                     //data: {"editId": editId},
                     success: function(response){
                         console.log(response);
                         // alert($.get());
-                        $('#exampleModal .modal-body').html( "<table>"+
+                        $('#exampleModal .modal-body')
+
+                            .html( "<table>"+
                        " <tbody> <th>Id</th> <td>"+response.id+"</td>  </tr>  <tr> <th>Name</th> <td>"+response.name+"</td>  </tr> <tr> <th>Subject</th> <td>"+response.subject+"</td>"+
                         "</tr><tr><th>Email</th><td>"+response.email+"</td></tr><tr><th>Message</th><td>"+response.message+"</td></tr><tr><th>Date</th><td>"+ ToJavaScriptDate(response.date)+"</td></tr></tbody></table>");
-                        $('#exampleModal').modal('show');
+
                     }
-                });
+                });*/
                 //   $(".modal-body #bookId").val( myBookId );
                 // As pointed out in comments,
                 // it is unnecessary to have to manually call the modal.

@@ -77,6 +77,11 @@ class ContactController extends Controller
     {
         //$deleteForm = $this->createDeleteForm($contact);
         $contact=$this->getDoctrine()->getManager()->getRepository(Contact::class)->find($id);
+
+
+
+        return $this->render("DoraBundle:contact:show.html.twig",array("contact"=>$contact));
+
         $encoder = new JsonEncoder();
         $normalizer = new ObjectNormalizer();
 
