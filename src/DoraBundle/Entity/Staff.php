@@ -4,6 +4,7 @@ namespace DoraBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use UserBundle\Entity\User;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Staff
@@ -24,28 +25,48 @@ class Staff extends User
 
     /**
      * @var string
-     *
+     * @Assert\NotBlank
+     * @Assert\NotNull
+     * @Assert\Regex(
+     *     pattern     = "/^[a-z ]+$/i",
+     *     htmlPattern = "^[a-zA-Z ]+$"
+     * )
      * @ORM\Column(name="nom", type="string", length=255)
      */
     private $nom;
 
     /**
      * @var string
-     *
+     * @Assert\NotBlank
+     * @Assert\NotNull
+     * @Assert\Regex(
+     *     pattern     = "/^[a-z ]+$/i",
+     *     htmlPattern = "^[a-zA-Z ]+$"
+     * )
      * @ORM\Column(name="prenom", type="string", length=255)
      */
     private $prenom;
 
     /**
      * @var string
-     *
+     * @Assert\NotBlank
+     * @Assert\NotNull
+     * @Assert\Regex(
+     *     pattern     = "/^[a-z ]+$/i",
+     *     htmlPattern = "^[a-zA-Z ]+$"
+     * )
      * @ORM\Column(name="poste", type="string", length=255)
      */
     private $poste;
 
     /**
      * @var string
-     *
+     * @Assert\NotBlank
+     * @Assert\NotNull
+     * @Assert\Regex(
+     *     pattern     = "/^[a-z ]+$/i",
+     *     htmlPattern = "^[a-zA-Z ]+$"
+     * )
      * @ORM\Column(name="statut", type="string", length=255)
      */
     private $statut;

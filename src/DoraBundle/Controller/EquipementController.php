@@ -52,9 +52,15 @@ class EquipementController extends Controller
             $em->flush();
 
             return $this->redirectToRoute('equipement_show', array('id' => $equipement->getId()));
+        }else if ($form->isSubmitted() && !$form->isValid()){
+            return $this->render('@Dora/equipement/new.html.twig', array(
+                'equipement' => $equipement,
+                'form' => $form->createView(),
+                "msg"=>"Verifier les champs",
+            ));
         }
 
-        return $this->render('@Dora/equipement/new.html.twig', array(
+            return $this->render('@Dora/equipement/new.html.twig', array(
             'equipement' => $equipement,
             'form' => $form->createView(),
         ));

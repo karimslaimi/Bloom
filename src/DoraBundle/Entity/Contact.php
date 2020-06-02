@@ -3,6 +3,8 @@
 namespace DoraBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+
 
 /**
  * Contact
@@ -23,26 +25,47 @@ class Contact
 
 
     /**
+     * @Assert\NotBlank
+     * @Assert\NotNull
+     * @Assert\Regex(
+     *     pattern     = "/^[a-z ]+$/i",
+     *     htmlPattern = "^[a-zA-Z ]+$"
+     * )
      * @ORM\Column(name="name",type="string")
      */
     private $name;
 
     /**
+     * @Assert\NotBlank
+     * @Assert\NotNull
+     * @Assert\Regex(
+     *     pattern     = "/^[a-z ]+$/i",
+     *     htmlPattern = "^[a-zA-Z ]+$"
+     * )
      * @ORM\Column(name="subject",type="string")
      */
     private $subject;
 
     /**
+     * @Assert\NotBlank
+     * @Assert\NotNull
+     * @Assert\Regex(
+     *     pattern="/^[a-zA-Z0-9_.-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/",
+     *     htmlPattern = "^[a-zA-Z0-9_.-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$"
+     * )
      * @ORM\Column(name="email",type="string")
      */
     private $email;
 
     /**
+     * @Assert\NotBlank
+     * @Assert\NotNull
      * @ORM\Column(name="message",type="string")
      */
     private $message;
 
     /**
+
      * @ORM\Column(name="date",type="datetime")
      */
     private $date;

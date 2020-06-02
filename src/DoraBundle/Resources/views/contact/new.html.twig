@@ -31,7 +31,7 @@
     <section class="contact-page-area section-gap">
         <div class="container">
             <div class="row">
-                <div class="map-wrap" style="width:100%; height: 445px;" id="map"></div>
+                <div class="map-wrap" style="width:100%; height: 445px;" ><iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12762.65492409878!2d10.189732!3d36.898392!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x683b3ab5565cd357!2st!5e0!3m2!1sen!2stn!4v1591107877848!5m2!1sen!2stn"  width="1180" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe></div>
                 <div class="col-lg-4 d-flex flex-column address-wrap">
                     <div class="single-contact-address d-flex flex-row">
                         <div class="icon">
@@ -83,6 +83,8 @@
                             </div>
                             <div class="col-lg-12">
                                 <div class="alert-msg text-success" style="text-align: left;">{% if msg is defined %}{{ msg }}{% endif %}</div>
+                                    <div class="alert-msg text-danger" style="text-align: left;">
+                                    {% if error is defined %}{{ error }}{% endif %}</div>
                                 <button class="btn" style="float: right;">Envoyer Message</button>
                             </div>
                         </div>

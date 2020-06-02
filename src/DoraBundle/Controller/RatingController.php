@@ -117,6 +117,12 @@ class RatingController extends Controller
             $em->flush();
 
             return $this->redirectToRoute('rating_show', array('id' => $rating->getId()));
+        }else   if ($form->isSubmitted() && !$form->isValid()) {
+            return $this->render('@Dora/rating/new.html.twig', array(
+                'rating' => $rating,
+                'form' => $form->createView(),
+                "error"=>"Verifier les champs",
+            ));
         }
 
         return $this->render('@Dora/rating/new.html.twig', array(

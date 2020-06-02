@@ -4,6 +4,7 @@ namespace DoraBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use UserBundle\Entity\User;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Jardin
@@ -24,21 +25,30 @@ class Jardin extends User
 
     /**
      * @var string
-     *
+     * @Assert\NotBlank
+     * @Assert\NotNull
+
      * @ORM\Column(name="name", type="string", length=255)
      */
     private $name;
 
     /**
      * @var string
-     *
+     * @Assert\NotBlank
+     * @Assert\NotNull
+
      * @ORM\Column(name="description", type="string", length=255)
      */
     private $description;
 
     /**
      * @var string
-     *
+     * @Assert\NotBlank
+     * @Assert\NotNull
+     * @Assert\Regex(
+     *     pattern     = "/^[0-9]+$/i",
+     *     htmlPattern = "^[0-9]+$"
+     * )
      * @ORM\Column(name="numtel", type="string", length=255)
      */
     private $numtel;
@@ -53,7 +63,12 @@ class Jardin extends User
 
     /**
      * @var string
-     *
+     * @Assert\NotBlank
+     * @Assert\NotNull
+     * @Assert\Regex(
+     *     pattern     = "/^[a-z ]+$/i",
+     *     htmlPattern = "^[a-zA-Z ]+$"
+     * )
      * @ORM\Column(name="Adresse", type="string", length=255)
      */
     private $adresse;

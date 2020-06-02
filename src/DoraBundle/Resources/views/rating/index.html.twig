@@ -203,7 +203,8 @@
                         </div>
                     </div>
 
-                </div> <button type="submit" class="btn btn-primary pull-right">submit</button>
+                </div> <button type="submit" class="btn btn-primary pull-right">submit</button><div class="alert-msg text-danger" style="text-align: left;">
+                {% if error is defined %}{{ error }}{% endif %}</div>
             {{form_end(form)}}
         </div>
     </div>

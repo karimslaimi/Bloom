@@ -3,6 +3,7 @@
 namespace DoraBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Equipement
@@ -23,6 +24,12 @@ class Equipement
 
 
     /**
+     * @Assert\NotBlank
+     * @Assert\NotNull
+     * @Assert\Regex(
+     *     pattern     = "/^[a-z ]+$/i",
+     *     htmlPattern = "^[a-zA-Z ]+$"
+     * )
      * @ORM\Column(name="nom",type="string")
      */
     private $nom;

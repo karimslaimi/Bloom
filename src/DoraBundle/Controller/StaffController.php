@@ -84,6 +84,12 @@ class StaffController extends Controller
             $em->flush();
 
             return $this->redirectToRoute('staff_show', array('id' => $staff->getId()));
+        }else if ($form->isSubmitted() && $form->isValid()) {
+            return $this->render('@Dora/staff/new.html.twig', array(
+                'staff' => $staff,
+                'form' => $form->createView(),
+                "error"=>"Verifier les champs"
+            ));
         }
 
         return $this->render('@Dora/staff/new.html.twig', array(

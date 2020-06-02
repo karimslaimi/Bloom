@@ -3,6 +3,7 @@
 namespace DoraBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Rating
@@ -23,6 +24,9 @@ class Rating
 
 
     /**
+     * @Assert\NotBlank
+     * @Assert\NotNull
+
      * @ORM\Column(name="comment",type="string")
      */
     private $comment;
@@ -38,6 +42,12 @@ class Rating
     private $date;
 
     /**
+     *  @Assert\NotBlank
+     * @Assert\NotNull
+     * @Assert\Regex(
+     *     pattern     = "/^[a-z ]+$/i",
+     *     htmlPattern = "^[a-zA-Z ]+$"
+     * )
      * @ORM\Column(name="client",type="string")
      */
     private $client;

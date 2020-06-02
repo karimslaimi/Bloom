@@ -59,6 +59,12 @@ class ContactController extends Controller
                 'form' => $form->createView(),
                 "msg"=>"Votre message a été envoyé"
             ));
+        }else if($form->isSubmitted() && !$form->isValid()){
+            return $this->render('@Dora/contact/new.html.twig', array(
+                'contact' => $contact,
+                'form' => $form->createView(),
+                "error"=>"Verifier les champs"
+            ));
         }
 
         return $this->render('@Dora/contact/new.html.twig', array(
